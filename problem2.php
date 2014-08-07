@@ -10,6 +10,7 @@
 Calculate the higher Fibonacci number until it
 reaches the parameter set
 */
+
 	function fibo($end) {
 		$n0 = 0;
 		$n1 = 1;
@@ -21,22 +22,23 @@ reaches the parameter set
 		 } while ($n2 <= $end);
 		return $n0;
 	}
-	function isEven(number) {
-		if (number % 2 != 0) {
+
+	function isEven($num) {
+		if ($num % 2 != 0) {
 			return true;
 		}
 	}
 	
-	function sumFiboEven() {
-		$result;
-		for ($i=0; $i < 10; $i++) { 
-			if (isEven(i) === true) {
-				$result = fibo(i) + $result;
+	function sumFiboEven($limit) {
+		for ($counter=0; $counter < $limit; $counter++) { 
+			$sum = fibo($counter);
+			if (isEven($sum) === true) {
+				# code...
 			}
-		}	
+		}
 	}
 	
-	//echo fibo(10);
+	echo sumFiboEven(10);
 
 
  ?>
