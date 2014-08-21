@@ -11,7 +11,7 @@ Calculate the higher Fibonacci number until it
 reaches the parameter set
 */
 
-	function fibo($end) {
+	function fibo($end, $printSequence) {
 		$n0 = 0;
 		$n1 = 1;
 		$n2 = 0;
@@ -19,27 +19,22 @@ reaches the parameter set
 		 	$n2 = $n1 + $n0;
 			$n0 = $n1;
 			$n1 = $n2;
+			if($printSequence === true) {echo $n0."<br>";}
 		 } while ($n2 <= $end);
 		return $n0;
 	}
-
+//checks if a number is even
 	function isEven($num) {
 		if ($num % 2 != 0) {
 			return true;
 		}
 	}
-	
-	function sumFiboEven($limit) {
-		for ($counter=0; $counter < $limit; $counter++) { 
-			$sum = fibo($counter);
-			if (isEven($sum) === true) {
-				# code...
-			}
-		}
-	}
-	
-	echo sumFiboEven(10);
 
+	function result($count) {
+		
+	}
+	//result(8);
+	fibo(10,false);
 
  ?>
 	<h1></h1>
