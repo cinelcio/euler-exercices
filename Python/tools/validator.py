@@ -1,8 +1,16 @@
 class Validator():
+    '''
+    This validator checks the value passed. It says if it is an positive integer higher than 0 (zero) and if a value passed as the limit for any counter is indeed higher than the first multiplier of the counter.
+    '''
 
     warning = ""
 
     def validatePositiveInt(data, warn = False):
+        '''
+        Here is checked if the value passed is an positive integer higher than 0 (zero).
+        If warn is set to True it also returns the value in 'warning', which contains a brief explaination of why the result was given.
+        '''
+
         global warning
         warning = ""
 
@@ -27,6 +35,10 @@ class Validator():
 
 
     def validateMinimalInt(value, minimal, warn = False):
+        '''
+        Here is checked if the value passed is higher thant the minimal, also passed. as an argument. If warn is set to True it also returns the value in 'warning', which contains a brief explaination of why the result was given.
+        '''
+
         global warning
 
         if Validator.validatePositiveInt(value) == False or Validator.validatePositiveInt(minimal) == False:
