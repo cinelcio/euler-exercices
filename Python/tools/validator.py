@@ -5,59 +5,73 @@ class Validator():
 
     warning = ""
 
-    def validatePositiveInt(data, warn = False):
-        '''
-        Here is checked if the value passed is an positive integer higher than 0 (zero).
-        If warn is set to True it also returns the value in 'warning', which contains a brief explaination of why the result was given.
-        '''
 
-        global warning
-        warning = ""
+    def __init__(self): pass
+
+    def validatePositiveInt(self, data, warn = False):
+        ''' Here is checked if the value passed is an positive integer higher than 0 (zero). If warn is set to True it also returns the value in 'warning', which contains a brief explaination of why the result was given. '''
+
+        v = Validator()
 
         if data == None:
-            warning = "Argument is empty."
+            self.warning = "Argument is empty."
+            if warn == True:
+                print(self.warning)
             return None
         elif not isinstance(data, int):
-            warning = "The following argument is not an integer: " + str(data) + "."
+            self.warning = "The following argument is not an integer: " + str(data) + "."
+            if warn == True:
+                print(self.warning)
             return False
         elif data == 0:
-            warning = "The argument value is 0 (zero)."
-            return False
+            self.warning = "The argument value is 0 (zero)."
+            if warn == True:
+                print(self.warning)
+            return None
         elif data < 0:
-            warning = "Only positive integers are allowed. " + str(data) + " is negative."
+            self.warning = "Only positive integers are allowed. " + str(data) + " is negative."
+            if warn == True:
+                print(self.warning)
             return False
         else:
-            warning = "The data is a positive integer higher than 0 (zero)."
+            self.warning = "The data is a positive integer higher than 0 (zero)."
             return True
 
-        if warn == True:
-            return warning
+        # if warn == True:
+        #     print(self.warning)
 
 
-    def validateMinimalInt(value, minimal, warn = False):
+    def validateMinimalInt(self, value, minimal, warn = False):
         '''
         Here is checked if the value passed is higher thant the minimal, also passed. as an argument. If warn is set to True it also returns the value in 'warning', which contains a brief explaination of why the result was given.
         '''
-
-        global warning
-
-        if Validator.validatePositiveInt(value) == False or Validator.validatePositiveInt(minimal) == False:
-            pass
+        v = Validator()
+        if self.validatePositiveInt(value) == False or self.validatePositiveInt(minimal) == False:
+            return warning
         elif value > minimal:
-            warning = "Arguments must be below the limit. Put them below " + str(minimal) + " or increase limit."
+            self.warning = "Arguments must be below the limit. Put them below " + str(minimal) + " or increase limit."
+            if warn == True:
+                print(self.warning)
             return False
         elif value == minimal:
-            warning = "The first value should not be equal to the minimal choosen."
+            self.warning = "The first value should not be equal to the minimal choosen."
+            if warn == True:
+                print(self.warning)
             return False
         else:
             return True
 
-        if warn == True:
-            return warning
+        # if warn == True:
+        #     return self.warning
 
 if __name__ == '__main__':
+    v = Validator()
+
     print("Module Health Check:")
-    print(Validator.validatePositiveInt(-1, warn = True))
-    print(Validator.validatePositiveInt("ab", warn = True))
-    print(Validator.validatePositiveInt(3, warn = True))
-    print(Validator.validatePositiveInt(0, warn = True))
+    v.validatePositiveInt(data = -1, warn = True)
+    v.validatePositiveInt("ab", warn = True)
+    v.validatePositiveInt(0, warn = True)
+    print(v.validatePositiveInt(3, warn = True))
+    v.validateMinimalInt(15, 10, warn = True)
+    v.validateMinimalInt(10, 10, warn = True)
+    print(v.validateMinimalInt(5, 10, warn = True))
