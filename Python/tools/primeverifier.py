@@ -10,11 +10,11 @@ class PrimeVerifier():
     def __init__(self):
         pass
 
-    def readertest():
+    def ReadSolutionsFound(self):
         p = PrimeVerifier()
-        with open('primesfound.csv', newline='') as csvfile:
-            primes = csv.reader(csvfile, delimiter=' ', quotechar='|')
-            for row in primes:
+        with open('primesfound.csv', newline='\n') as csvfile:
+            knowprimes = csv.reader(csvfile, delimiter=' ', quotechar='|')
+            for row in knowprimes:
                 print(', '.join(row))
 
     def CheckBasicRulesr(self, number):
@@ -25,4 +25,4 @@ class PrimeVerifier():
         #     return validatenumber
 
 
-p = PrimeVerifier.readertest()
+p = PrimeVerifier().ReadSolutionsFound()

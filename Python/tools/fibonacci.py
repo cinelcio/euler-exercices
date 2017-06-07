@@ -53,8 +53,8 @@ class FiboCounter():
                 break
             else:
                 continue
-                
 
+    #TODO make this method so you send the position (the ordinal number) and receive the fibonacci in that position.
     def GetResultByPosition(self, position):
         '''
         This method should return the fibonacci number in the position given. The first result is 1, the second is 1, the third is 2, the fourth is 5 and so on.
@@ -64,3 +64,5 @@ class FiboCounter():
             print(v.warning)
         else:
             pass
+f = FiboCounter()
+print(f.CountFibonacciSequence(20, showlist = True))

@@ -1,8 +1,9 @@
 import unittest
-import validator as v
+from tools import validator
 
 class TestValidatorWarning(unittest.TestCase):
     def test_warning_variable_empty(self):
+        v = validator.Validator()
         self.assertTrue(v.warning == "")
 
 

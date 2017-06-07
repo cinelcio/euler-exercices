@@ -6,7 +6,8 @@ class Validator():
     warning = ""
 
 
-    def __init__(self): pass
+    def __init__(self):
+        pass
 
     def validatePositiveInt(self, data, warn = False):
         ''' Here is checked if the value passed is an positive integer higher than 0 (zero). If warn is set to True it also returns the value in 'warning', which contains a brief explaination of why the result was given. '''
@@ -47,7 +48,9 @@ class Validator():
         '''
         v = Validator()
         if self.validatePositiveInt(value) == False or self.validatePositiveInt(minimal) == False:
-            return warning
+            if warn == True:
+                print(self.warning)
+            return False
         elif value > minimal:
             self.warning = "Arguments must be below the limit. Put them below " + str(minimal) + " or increase limit."
             if warn == True:
@@ -69,9 +72,9 @@ if __name__ == '__main__':
 
     print("Module Health Check:")
     v.validatePositiveInt(data = -1, warn = True)
-    v.validatePositiveInt("ab", warn = True)
-    v.validatePositiveInt(0, warn = True)
-    print(v.validatePositiveInt(3, warn = True))
+    v.validatePositiveInt(data = "ab", warn = True)
+    v.validatePositiveInt(data = 0, warn = True)
+    print(v.validatePositiveInt(data = 3, warn = True))
     v.validateMinimalInt(15, 10, warn = True)
     v.validateMinimalInt(10, 10, warn = True)
     print(v.validateMinimalInt(5, 10, warn = True))
